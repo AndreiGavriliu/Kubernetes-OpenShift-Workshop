@@ -1,0 +1,9 @@
+apiVersion: icp4a.ibm.com/v1
+kind: WfPSRuntime
+metadata:
+  name: wfps-instance1
+spec:
+  appVersion: "26.0.0"
+  deploymentLicense: "non-production"
+  license:
+    accept: true

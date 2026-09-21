@@ -1,0 +1,40 @@
+apiVersion: icp4a.ibm.com/v1
+kind: ICP4ACluster
+metadata:
+  name: icp4adeploy
+  labels:
+    app.kubernetes.io/instance: ibm-dba
+    app.kubernetes.io/managed-by: ibm-dba
+    app.kubernetes.io/name: ibm-dba
+    release: 26.0.0
+    cp4ba.ibm.com/backup-type: mandatory
+spec:
+  appVersion: 26.0.0
+  ibm_license: "accept"
+  shared_configuration:
+    sc_deployment_license: "non-production"
+    sc_deployment_context: "CP4A"
+    image_pull_secrets:
+    - ibm-entitlement-key
+    sc_image_repository: cp.icr.io
+    root_ca_secret: icp4a-root-ca
+    sc_deployment_type: Production
+    sc_deployment_platform: OCP
+    sc_deployment_profile_size: "small" # default
+    sc_deployment_patterns: workflow-process-service
+    sc_optional_components: wfps_authoring
+    trusted_certificate_list: []
+    storage_configuration:
+      sc_slow_file_storage_classname: "<Required>"
+      sc_medium_file_storage_classname: "<Required>"
+      sc_fast_file_storage_classname: "<Required>"
+      sc_block_storage_classname: "<Required>"
+  bastudio_configuration:
+    # Designate an existing LDAP user for the BAStudio and WfPS authoring repostiory admin user.
+    # If not provided. Then the default IAM admin user will be used as the default admin user ID.
+    # You can get that from secret ibm-iam-bindinfo-platform-auth-idp-credentials
+    admin_user:  ""
+    database:
+      dc_use_postgres: true
+      type: postgresql
+      ssl_enabled: true
