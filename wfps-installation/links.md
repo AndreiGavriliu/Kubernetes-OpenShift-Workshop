@@ -8,3 +8,4 @@
 - [CP4BA Setup](https://www.ibm.com/docs/en/SSYHZ8_26.0.0/pdf/pdf_cp4ba_setup_online.pdf) 
 - [WfPS Installation](https://www.ibm.com/docs/en/SSYHZ8_26.0.0/pdf/pdf_cp4ba_wfps_authoring.pdf)
 - [ICP4ACluster Custom Resource Parameters](https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/26.0.0?topic=reference-custom-resource-configuration-parameters)
+- [WfPSRuntime Custom Resource Parameters](https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/26.0.0?topic=reference-cp4ba-workflow-process-service-runtime-parameters)
