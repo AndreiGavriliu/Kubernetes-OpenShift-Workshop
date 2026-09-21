@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workshop-web
+  labels:
+    app: workshop-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workshop-web
+  template:
+    metadata:
+      labels:
+        app: workshop-web
+    spec:
+      containers:
+        - name: nginx
+          image: nginxinc/nginx-unprivileged
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+          - name: workshop-web
+            mountPath: /usr/share/nginx/html/index.html
+            subPath: index.html
+          - name: workshop-web-data
+            mountPath: /usr/share/nginx/html/data
+      volumes:
+        - name: workshop-web
+          configMap:
+            name: workshop-web
+        - name: workshop-web-data
+          persistentVolumeClaim:
+            claimName: workshop-web-data
+            
