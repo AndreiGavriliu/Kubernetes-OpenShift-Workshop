@@ -7,3 +7,5 @@ spec:
   deploymentLicense: "non-production"
   license:
     accept: true
+  persistent:
+    storageClassName: <storage_class_name>
