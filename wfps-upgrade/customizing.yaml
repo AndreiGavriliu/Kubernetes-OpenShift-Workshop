@@ -1,0 +1,8 @@
+spec:
+  workflow_authoring_configuration:
+    liberty_custom_xml: |
+      <server>
+          <repository>
+                <max-cached-objects-during-refactoring merge="replace">512</max-cached-objects-during-refactoring>
+          </repository>
+      </server>
