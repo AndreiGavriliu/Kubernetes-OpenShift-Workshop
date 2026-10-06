@@ -35,4 +35,6 @@ spec:
       dc_use_postgres: true
       type: postgresql
       ssl_enabled: true
+  resource_registry_configuration:
+    replica_size: 1
  
