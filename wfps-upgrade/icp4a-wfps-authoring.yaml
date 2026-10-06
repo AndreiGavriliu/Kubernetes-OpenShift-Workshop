@@ -1,0 +1,38 @@
+apiVersion: icp4a.ibm.com/v1
+kind: ICP4ACluster
+metadata:
+  name: icp4adeploy
+  labels:
+    app.kubernetes.io/instance: ibm-dba
+    app.kubernetes.io/managed-by: ibm-dba
+    app.kubernetes.io/name: ibm-dba
+    release: 25.0.0
+    cp4ba.ibm.com/backup-type: mandatory
+spec:
+  appVersion: 25.0.0
+  ibm_license: "accept"
+  shared_configuration:
+    sc_deployment_license: "non-production"
+    sc_deployment_context: "CP4A"
+    image_pull_secrets:
+    - ibm-entitlement-key
+    sc_image_repository: cp.icr.io
+    root_ca_secret: icp4a-root-ca
+    sc_deployment_type: Production
+    sc_deployment_platform: OCP
+    sc_deployment_profile_size: "small"
+    sc_deployment_patterns: workflow-process-service
+    sc_optional_components: wfps_authoring
+    storage_configuration:
+      sc_slow_file_storage_classname: "huaweisc"
+      sc_medium_file_storage_classname: "huaweisc"
+      sc_fast_file_storage_classname: "huaweisc"
+      sc_block_storage_classname: "huaweisc"
+  bastudio_configuration:
+    admin_user:  ""
+    admin_secret_name: "icp4adeploy-bas-admin-secret"
+    database:
+      dc_use_postgres: true
+      type: postgresql
+      ssl_enabled: true
+ 
